@@ -10,7 +10,7 @@ namespace VCNDSLayout
 {
     public partial class FormEditor : Form
     {
-        public const string Release = "debug 1"; //CllVersionReplace "stability major"
+        public const string Release = "alpha 2"; //CllVersionReplace "stability major"
 
         private string VCNDSLayoutEditorDataPath;
         private string CurrentFilePath;
@@ -653,10 +653,10 @@ namespace VCNDSLayout
                 try
                 {
                     sr = File.OpenText(Path.Combine(lastConfig, "config.json"));
-                    JSON.SyntacticAnalyzer syn = new JSON.SyntacticAnalyzer(sr);
-                    JSON.Element config = syn.Run();
+                    Cll.JSON.SyntacticAnalyzer syn = new Cll.JSON.SyntacticAnalyzer(sr);
+                    Cll.JSON.Element config = syn.Run();
                     sr.Close();
-
+                    
                     Config = new Configuration(config);
 
                     foreach (Layout layout in Config.Layouts)
@@ -667,34 +667,34 @@ namespace VCNDSLayout
 
                     for (int i = 0; i < Config.Layouts.Length; i++)
                     {
-                        Config.Layouts[i].Name.Default = ((JSON.String)config.Value.GetValue("strings").GetValue("Default").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.Default = ((JSON.String)config.Value.GetValue("strings").GetValue("Default").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.Deutsch = ((JSON.String)config.Value.GetValue("strings").GetValue("Deutsch").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.Deutsch = ((JSON.String)config.Value.GetValue("strings").GetValue("Deutsch").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.EnglishUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("EnglishUSA").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.EnglishUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("EnglishUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.EnglishEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("EnglishEUR").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.EnglishEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("EnglishEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.FrenchUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("FrenchUSA").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.FrenchUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("FrenchUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.FrenchEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("FrenchEUR").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.FrenchEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("FrenchEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.Italian = ((JSON.String)config.Value.GetValue("strings").GetValue("Italian").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.Italian = ((JSON.String)config.Value.GetValue("strings").GetValue("Italian").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.Japanese = ((JSON.String)config.Value.GetValue("strings").GetValue("Japanese").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.Japanese = ((JSON.String)config.Value.GetValue("strings").GetValue("Japanese").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.Nederlands = ((JSON.String)config.Value.GetValue("strings").GetValue("Nederlands").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.Nederlands = ((JSON.String)config.Value.GetValue("strings").GetValue("Nederlands").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.PortugueseUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("PortugueseUSA").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.PortugueseUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("PortugueseUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.PortugueseEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("PortugueseEUR").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.PortugueseEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("PortugueseEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.Russian = ((JSON.String)config.Value.GetValue("strings").GetValue("Russian").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.Russian = ((JSON.String)config.Value.GetValue("strings").GetValue("Russian").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.SpanishUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("SpanishUSA").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.SpanishUSA = ((JSON.String)config.Value.GetValue("strings").GetValue("SpanishUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
-                        Config.Layouts[i].Name.SpanishEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("SpanishEUR").GetValue(Config.Layouts[i].NameID)).Value;
-                        Config.Layouts[i].Description.SpanishEUR = ((JSON.String)config.Value.GetValue("strings").GetValue("SpanishEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.Default = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Default").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.Default = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Default").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.Deutsch = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Deutsch").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.Deutsch = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Deutsch").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.EnglishUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("EnglishUSA").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.EnglishUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("EnglishUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.EnglishEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("EnglishEUR").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.EnglishEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("EnglishEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.FrenchUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("FrenchUSA").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.FrenchUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("FrenchUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.FrenchEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("FrenchEUR").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.FrenchEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("FrenchEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.Italian = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Italian").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.Italian = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Italian").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.Japanese = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Japanese").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.Japanese = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Japanese").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.Nederlands = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Nederlands").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.Nederlands = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Nederlands").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.PortugueseUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("PortugueseUSA").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.PortugueseUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("PortugueseUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.PortugueseEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("PortugueseEUR").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.PortugueseEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("PortugueseEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.Russian = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Russian").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.Russian = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("Russian").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.SpanishUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("SpanishUSA").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.SpanishUSA = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("SpanishUSA").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                        Config.Layouts[i].Name.SpanishEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("SpanishEUR").GetValue(Config.Layouts[i].NameID)).Value;
+                        Config.Layouts[i].Description.SpanishEUR = ((Cll.JSON.String)config.Value.GetValue("strings").GetValue("SpanishEUR").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         comboBoxLayout.Items.Add(Config.Layouts[i].Name.Default);
                     }
 
@@ -847,20 +847,20 @@ namespace VCNDSLayout
 
                 StreamReader sr = null;
 
-                JSON.Element df = null;
-                JSON.Element de = null;
-                JSON.Element enUSA = null;
-                JSON.Element enEUR = null;
-                JSON.Element frUSA = null;
-                JSON.Element frEUR = null;
-                JSON.Element it = null;
-                JSON.Element ja = null;
-                JSON.Element nl = null;
-                JSON.Element ptUSA = null;
-                JSON.Element ptEUR = null;
-                JSON.Element ru = null;
-                JSON.Element esUSA = null;
-                JSON.Element esEUR = null;
+                Cll.JSON.Element df = null;
+                Cll.JSON.Element de = null;
+                Cll.JSON.Element enUSA = null;
+                Cll.JSON.Element enEUR = null;
+                Cll.JSON.Element frUSA = null;
+                Cll.JSON.Element frEUR = null;
+                Cll.JSON.Element it = null;
+                Cll.JSON.Element ja = null;
+                Cll.JSON.Element nl = null;
+                Cll.JSON.Element ptUSA = null;
+                Cll.JSON.Element ptEUR = null;
+                Cll.JSON.Element ru = null;
+                Cll.JSON.Element esUSA = null;
+                Cll.JSON.Element esEUR = null;
 
                 try
                 {
@@ -871,8 +871,8 @@ namespace VCNDSLayout
                     string stringsPath = Path.Combine(contentPath, "data", "strings");
 
                     sr = File.OpenText(Path.Combine(contentPath, "configuration_cafe.json"));
-                    JSON.SyntacticAnalyzer syn = new JSON.SyntacticAnalyzer(sr);
-                    JSON.Element config = syn.Run();
+                    Cll.JSON.SyntacticAnalyzer syn = new Cll.JSON.SyntacticAnalyzer(sr);
+                    Cll.JSON.Element config = syn.Run();
                     sr.Close();
 
                     Config = new Configuration(config);
@@ -886,13 +886,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         df = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.Default = ((JSON.String)df.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.Default = ((JSON.String)df.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.Default = ((Cll.JSON.String)df.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.Default = ((Cll.JSON.String)df.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                             comboBoxLayout.Items.Add(Config.Layouts[i].Name.Default);
                         }
                     }
@@ -900,169 +900,169 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "de", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "de", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         de = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.Deutsch = ((JSON.String)de.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.Deutsch = ((JSON.String)de.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.Deutsch = ((Cll.JSON.String)de.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.Deutsch = ((Cll.JSON.String)de.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "en", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "en", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         enUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.EnglishUSA = ((JSON.String)enUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.EnglishUSA = ((JSON.String)enUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.EnglishUSA = ((Cll.JSON.String)enUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.EnglishUSA = ((Cll.JSON.String)enUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "eur_en", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "eur_en", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         enEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.EnglishEUR = ((JSON.String)enEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.EnglishEUR = ((JSON.String)enEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.EnglishEUR = ((Cll.JSON.String)enEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.EnglishEUR = ((Cll.JSON.String)enEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "usa_fr", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "usa_fr", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         frUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.FrenchUSA = ((JSON.String)frUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.FrenchUSA = ((JSON.String)frUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.FrenchUSA = ((Cll.JSON.String)frUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.FrenchUSA = ((Cll.JSON.String)frUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "fr", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "fr", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         frEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.FrenchEUR = ((JSON.String)frEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.FrenchEUR = ((JSON.String)frEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.FrenchEUR = ((Cll.JSON.String)frEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.FrenchEUR = ((Cll.JSON.String)frEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "it", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "it", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         it = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.Italian = ((JSON.String)it.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.Italian = ((JSON.String)it.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.Italian = ((Cll.JSON.String)it.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.Italian = ((Cll.JSON.String)it.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "ja", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "ja", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ja = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.Japanese = ((JSON.String)ja.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.Japanese = ((JSON.String)ja.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.Japanese = ((Cll.JSON.String)ja.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.Japanese = ((Cll.JSON.String)ja.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "nl", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "nl", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         nl = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.Nederlands = ((JSON.String)nl.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.Nederlands = ((JSON.String)nl.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.Nederlands = ((Cll.JSON.String)nl.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.Nederlands = ((Cll.JSON.String)nl.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "usa_pt", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "usa_pt", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ptUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.PortugueseUSA = ((JSON.String)ptUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.PortugueseUSA = ((JSON.String)ptUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.PortugueseUSA = ((Cll.JSON.String)ptUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.PortugueseUSA = ((Cll.JSON.String)ptUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "pt", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "pt", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ptEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.PortugueseEUR = ((JSON.String)ptEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.PortugueseEUR = ((JSON.String)ptEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.PortugueseEUR = ((Cll.JSON.String)ptEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.PortugueseEUR = ((Cll.JSON.String)ptEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "ru", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "ru", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ru = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.Russian = ((JSON.String)ru.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.Russian = ((JSON.String)ru.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.Russian = ((Cll.JSON.String)ru.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.Russian = ((Cll.JSON.String)ru.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "usa_es", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "usa_es", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         esUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.SpanishUSA = ((JSON.String)esUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.SpanishUSA = ((JSON.String)esUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.SpanishUSA = ((Cll.JSON.String)esUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.SpanishUSA = ((Cll.JSON.String)esUSA.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
                     if (File.Exists(Path.Combine(stringsPath, "es", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "es", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         esEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            Config.Layouts[i].Name.SpanishEUR = ((JSON.String)esEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
-                            Config.Layouts[i].Description.SpanishEUR = ((JSON.String)esEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
+                            Config.Layouts[i].Name.SpanishEUR = ((Cll.JSON.String)esEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].NameID)).Value;
+                            Config.Layouts[i].Description.SpanishEUR = ((Cll.JSON.String)esEUR.Value.GetValue("strings").GetValue(Config.Layouts[i].DescriptionID)).Value;
                         }
                     }
 
@@ -1104,25 +1104,25 @@ namespace VCNDSLayout
                 StreamWriter sw = null;
                 StreamReader sr = null;
 
-                JSON.Element df = null;
-                JSON.Element de = null;
-                JSON.Element enUSA = null;
-                JSON.Element enEUR = null;
-                JSON.Element frUSA = null;
-                JSON.Element frEUR = null;
-                JSON.Element it = null;
-                JSON.Element ja = null;
-                JSON.Element nl = null;
-                JSON.Element ptUSA = null;
-                JSON.Element ptEUR = null;
-                JSON.Element ru = null;
-                JSON.Element esUSA = null;
-                JSON.Element esEUR = null;
+                Cll.JSON.Element df = null;
+                Cll.JSON.Element de = null;
+                Cll.JSON.Element enUSA = null;
+                Cll.JSON.Element enEUR = null;
+                Cll.JSON.Element frUSA = null;
+                Cll.JSON.Element frEUR = null;
+                Cll.JSON.Element it = null;
+                Cll.JSON.Element ja = null;
+                Cll.JSON.Element nl = null;
+                Cll.JSON.Element ptUSA = null;
+                Cll.JSON.Element ptEUR = null;
+                Cll.JSON.Element ru = null;
+                Cll.JSON.Element esUSA = null;
+                Cll.JSON.Element esEUR = null;
 
                 try
                 {
                     ValidateBase(folderBrowserDialog.SelectedPath);
-                    JSON.SyntacticAnalyzer syn;
+                    Cll.JSON.SyntacticAnalyzer syn;
                     string contentPath = Path.Combine(folderBrowserDialog.SelectedPath, "content", "0010");
                     string texturesPath = Path.Combine(contentPath, "assets", "textures");
                     string stringsPath = Path.Combine(contentPath, "data", "strings");
@@ -1170,13 +1170,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         df = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            df.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.Default));
-                            df.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.Default));
+                            df.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.Default));
+                            df.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.Default));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "strings.json"));
                         sw.Write(df.ToString(""));
@@ -1186,13 +1186,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "de", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "de", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         de = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            de.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.Deutsch));
-                            de.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.Deutsch));
+                            de.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.Deutsch));
+                            de.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.Deutsch));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "de", "strings.json"));
                         sw.Write(de.ToString(""));
@@ -1202,13 +1202,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "en", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "en", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         enUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            enUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.EnglishUSA));
-                            enUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.EnglishUSA));
+                            enUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.EnglishUSA));
+                            enUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.EnglishUSA));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "en", "strings.json"));
                         sw.Write(enUSA.ToString(""));
@@ -1218,13 +1218,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "eur_en", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "eur_en", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         enEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            enEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.EnglishEUR));
-                            enEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.EnglishEUR));
+                            enEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.EnglishEUR));
+                            enEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.EnglishEUR));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "eur_en", "strings.json"));
                         sw.Write(enEUR.ToString(""));
@@ -1234,13 +1234,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "usa_fr", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "usa_fr", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         frUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            frUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.FrenchUSA));
-                            frUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.FrenchUSA));
+                            frUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.FrenchUSA));
+                            frUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.FrenchUSA));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "usa_fr", "strings.json"));
                         sw.Write(frUSA.ToString(""));
@@ -1250,13 +1250,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "fr", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "fr", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         frEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            frEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.FrenchEUR));
-                            frEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.FrenchEUR));
+                            frEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.FrenchEUR));
+                            frEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.FrenchEUR));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "fr", "strings.json"));
                         sw.Write(frEUR.ToString(""));
@@ -1266,13 +1266,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "it", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "it", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         it = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            it.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.Italian));
-                            it.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.Italian));
+                            it.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.Italian));
+                            it.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.Italian));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "it", "strings.json"));
                         sw.Write(it.ToString(""));
@@ -1282,13 +1282,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "ja", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "ja", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ja = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            ja.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.Japanese));
-                            ja.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.Japanese));
+                            ja.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.Japanese));
+                            ja.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.Japanese));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "ja", "strings.json"));
                         sw.Write(ja.ToString(""));
@@ -1298,13 +1298,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "nl", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "nl", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         nl = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            nl.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.Nederlands));
-                            nl.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.Nederlands));
+                            nl.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.Nederlands));
+                            nl.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.Nederlands));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "nl", "strings.json"));
                         sw.Write(nl.ToString(""));
@@ -1314,13 +1314,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "usa_pt", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "usa_pt", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ptUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            ptUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.PortugueseUSA));
-                            ptUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.PortugueseUSA));
+                            ptUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.PortugueseUSA));
+                            ptUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.PortugueseUSA));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "usa_pt", "strings.json"));
                         sw.Write(ptUSA.ToString(""));
@@ -1330,13 +1330,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "pt", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "pt", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ptEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            ptEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.PortugueseEUR));
-                            ptEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.PortugueseEUR));
+                            ptEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.PortugueseEUR));
+                            ptEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.PortugueseEUR));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "pt", "strings.json"));
                         sw.Write(ptEUR.ToString(""));
@@ -1346,13 +1346,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "ru", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "ru", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         ru = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            ru.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.Russian));
-                            ru.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.Russian));
+                            ru.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.Russian));
+                            ru.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.Russian));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "ru", "strings.json"));
                         sw.Write(ru.ToString(""));
@@ -1362,13 +1362,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "usa_es", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "usa_es", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         esUSA = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            esUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.SpanishUSA));
-                            esUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.SpanishUSA));
+                            esUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.SpanishUSA));
+                            esUSA.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.SpanishUSA));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "usa_es", "strings.json"));
                         sw.Write(esUSA.ToString(""));
@@ -1378,13 +1378,13 @@ namespace VCNDSLayout
                     if (File.Exists(Path.Combine(stringsPath, "es", "strings.json")))
                     {
                         sr = File.OpenText(Path.Combine(stringsPath, "es", "strings.json"));
-                        syn = new JSON.SyntacticAnalyzer(sr);
+                        syn = new Cll.JSON.SyntacticAnalyzer(sr);
                         esEUR = syn.Run();
                         sr.Close();
                         for (int i = 0; i < Config.Layouts.Length; i++)
                         {
-                            esEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new JSON.String(Config.Layouts[i].Name.SpanishEUR));
-                            esEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new JSON.String(Config.Layouts[i].Description.SpanishEUR));
+                            esEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].NameID, new Cll.JSON.String(Config.Layouts[i].Name.SpanishEUR));
+                            esEUR.Value.GetValue("strings").SetValue(Config.Layouts[i].DescriptionID, new Cll.JSON.String(Config.Layouts[i].Description.SpanishEUR));
                         }
                         sw = File.CreateText(Path.Combine(stringsPath, "en", "strings.json"));
                         sw.Write(esEUR.ToString(""));

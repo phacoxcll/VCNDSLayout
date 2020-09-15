@@ -146,24 +146,24 @@ namespace VCNDSLayout
             Layouts[9].ScreenLowerGamePad = new Layout.ScreenStruct("lower", "drc", 106, 0, 640, 480);
         }
 
-        public Configuration(JSON.Element json)
+        public Configuration(Cll.JSON.Element json)
         {
-            JSON.Object config = (JSON.Object)json.Value.GetValue("configuration");
-            JSON.Array layout = (JSON.Array)config.GetValue("layouts").GetValue("layout");
-            JSON.Array groups = (JSON.Array)config.GetValue("layouts").GetValue("groups");
+            Cll.JSON.Object config = (Cll.JSON.Object)json.Value.GetValue("configuration");
+            Cll.JSON.Array layout = (Cll.JSON.Array)config.GetValue("layouts").GetValue("layout");
+            Cll.JSON.Array groups = (Cll.JSON.Array)config.GetValue("layouts").GetValue("groups");
 
             Layouts = new Layout[layout.Count];
             Groups = new int[groups.Count];
-            Bilinear = Convert.ToInt32(((JSON.Number)config.GetValue("3DRendering").GetValue("Bilinear")).Value);
-            RenderScale = Convert.ToInt32(((JSON.Number)config.GetValue("3DRendering").GetValue("RenderScale")).Value);
-            PixelArtUpscaler = Convert.ToInt32(((JSON.Number)config.GetValue("Display").GetValue("PixelArtUpscaler")).Value);
-            Brightness = Convert.ToInt32(((JSON.Number)config.GetValue("Display").GetValue("Brightness")).Value);
+            Bilinear = Convert.ToInt32(((Cll.JSON.Number)config.GetValue("3DRendering").GetValue("Bilinear")).Value);
+            RenderScale = Convert.ToInt32(((Cll.JSON.Number)config.GetValue("3DRendering").GetValue("RenderScale")).Value);
+            PixelArtUpscaler = Convert.ToInt32(((Cll.JSON.Number)config.GetValue("Display").GetValue("PixelArtUpscaler")).Value);
+            Brightness = Convert.ToInt32(((Cll.JSON.Number)config.GetValue("Display").GetValue("Brightness")).Value);
 
             if (config.Contains("arguments"))
             {
-                FoldOnPause = ((JSON.Boolean)config.GetValue("arguments").GetValue("fold_on_pause")).Value;
-                FoldOnResumeFadeFromBlackDuration = Convert.ToInt32(((JSON.Number)config.GetValue("arguments").GetValue("fold_on_resume_fade_from_black_duration")).Value);
-                FoldOnPauseTimeout = Convert.ToInt32(((JSON.Number)config.GetValue("arguments").GetValue("fold_on_pause_timeout")).Value);
+                FoldOnPause = ((Cll.JSON.Boolean)config.GetValue("arguments").GetValue("fold_on_pause")).Value;
+                FoldOnResumeFadeFromBlackDuration = Convert.ToInt32(((Cll.JSON.Number)config.GetValue("arguments").GetValue("fold_on_resume_fade_from_black_duration")).Value);
+                FoldOnPauseTimeout = Convert.ToInt32(((Cll.JSON.Number)config.GetValue("arguments").GetValue("fold_on_pause_timeout")).Value);
             }
             else
             {
@@ -173,10 +173,10 @@ namespace VCNDSLayout
             }
 
             for (int i = 0; i < Layouts.Length; i++)
-                Layouts[i] = new Layout((JSON.Object)layout.GetValue(i));
+                Layouts[i] = new Layout((Cll.JSON.Object)layout.GetValue(i));
 
             for (int i = 0; i < Groups.Length; i++)
-                Groups[i] = Convert.ToInt32(((JSON.Number)groups.GetValue(i)).Value);
+                Groups[i] = Convert.ToInt32(((Cll.JSON.Number)groups.GetValue(i)).Value);
         }
 
         public override string ToString()
@@ -201,16 +201,16 @@ namespace VCNDSLayout
             return sb.ToString();
         }
 
-        public JSON.Value GetJSON()
+        public Cll.JSON.Value GetJSON()
         {
-            JSON.Object jsonObj = new JSON.Object();
-            JSON.Object jsonConfiguration = new JSON.Object();
-            JSON.Object jsonLayouts = new JSON.Object();
-            JSON.Array arrayLayout = new JSON.Array();
-            JSON.Array arrayGroups = new JSON.Array();
-            JSON.Object json3DRendering = new JSON.Object();
-            JSON.Object jsonDisplay = new JSON.Object();
-            JSON.Object jsonArguments = new JSON.Object();
+            Cll.JSON.Object jsonObj = new Cll.JSON.Object();
+            Cll.JSON.Object jsonConfiguration = new Cll.JSON.Object();
+            Cll.JSON.Object jsonLayouts = new Cll.JSON.Object();
+            Cll.JSON.Array arrayLayout = new Cll.JSON.Array();
+            Cll.JSON.Array arrayGroups = new Cll.JSON.Array();
+            Cll.JSON.Object json3DRendering = new Cll.JSON.Object();
+            Cll.JSON.Object jsonDisplay = new Cll.JSON.Object();
+            Cll.JSON.Object jsonArguments = new Cll.JSON.Object();
 
             for (int i = 0; i < Layouts.Length; i++)
                 arrayLayout.AddValue(Layouts[i].GetJSON(i + 1));
@@ -238,24 +238,24 @@ namespace VCNDSLayout
             return jsonObj;
         }
 
-        public JSON.Value GetExtended()
+        public Cll.JSON.Value GetExtended()
         {
-            JSON.Object jsonObj = (JSON.Object)GetJSON();
-            JSON.Object Strings = new JSON.Object();
-            JSON.Object Default = new JSON.Object();
-            JSON.Object Deutsch = new JSON.Object();
-            JSON.Object EnglishUSA = new JSON.Object();
-            JSON.Object EnglishEUR = new JSON.Object();
-            JSON.Object FrenchUSA = new JSON.Object();
-            JSON.Object FrenchEUR = new JSON.Object();
-            JSON.Object Italian = new JSON.Object();
-            JSON.Object Japanese = new JSON.Object();
-            JSON.Object Nederlands = new JSON.Object();
-            JSON.Object PortugueseUSA = new JSON.Object();
-            JSON.Object PortugueseEUR = new JSON.Object();
-            JSON.Object Russian = new JSON.Object();
-            JSON.Object SpanishUSA = new JSON.Object();
-            JSON.Object SpanishEUR = new JSON.Object();
+            Cll.JSON.Object jsonObj = (Cll.JSON.Object)GetJSON();
+            Cll.JSON.Object Strings = new Cll.JSON.Object();
+            Cll.JSON.Object Default = new Cll.JSON.Object();
+            Cll.JSON.Object Deutsch = new Cll.JSON.Object();
+            Cll.JSON.Object EnglishUSA = new Cll.JSON.Object();
+            Cll.JSON.Object EnglishEUR = new Cll.JSON.Object();
+            Cll.JSON.Object FrenchUSA = new Cll.JSON.Object();
+            Cll.JSON.Object FrenchEUR = new Cll.JSON.Object();
+            Cll.JSON.Object Italian = new Cll.JSON.Object();
+            Cll.JSON.Object Japanese = new Cll.JSON.Object();
+            Cll.JSON.Object Nederlands = new Cll.JSON.Object();
+            Cll.JSON.Object PortugueseUSA = new Cll.JSON.Object();
+            Cll.JSON.Object PortugueseEUR = new Cll.JSON.Object();
+            Cll.JSON.Object Russian = new Cll.JSON.Object();
+            Cll.JSON.Object SpanishUSA = new Cll.JSON.Object();
+            Cll.JSON.Object SpanishEUR = new Cll.JSON.Object();
 
             foreach(Layout layout in Layouts)
             {

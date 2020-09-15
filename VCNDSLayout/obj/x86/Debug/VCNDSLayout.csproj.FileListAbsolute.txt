@@ -1,0 +1,11 @@
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\bin\x86\Debug\VCNDSLayout.exe.config
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\bin\x86\Debug\VCNDSLayout.exe
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\bin\x86\Debug\VCNDSLayout.pdb
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.csprojAssemblyReference.cache
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.FormEditor.resources
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.FormOptions.resources
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.Properties.Resources.resources
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.csproj.GenerateResource.cache
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.csproj.CoreCompileInputs.cache
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.exe
+C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\obj\x86\Debug\VCNDSLayout.pdb

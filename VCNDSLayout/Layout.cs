@@ -28,15 +28,15 @@ namespace VCNDSLayout
                 Position = new Point(x, y);
             }
 
-            public ScreenStruct(JSON.Object screen)
+            public ScreenStruct(Cll.JSON.Object screen)
             {
-                string[] size = ((JSON.String)screen.GetFirstValue("size")).Value.Split(new char[] { ' ' });
-                string[] position = ((JSON.String)screen.GetFirstValue("position")).Value.Split(new char[] { ' ' });
+                string[] size = ((Cll.JSON.String)screen.GetFirstValue("size")).Value.Split(new char[] { ' ' });
+                string[] position = ((Cll.JSON.String)screen.GetFirstValue("position")).Value.Split(new char[] { ' ' });
 
-                Source = ((JSON.String)screen.GetFirstValue("source")).Value;
-                Rotation = Convert.ToInt32(((JSON.Number)screen.GetFirstValue("rotation")).Value);
+                Source = ((Cll.JSON.String)screen.GetFirstValue("source")).Value;
+                Rotation = Convert.ToInt32(((Cll.JSON.Number)screen.GetFirstValue("rotation")).Value);
                 Size = new Size(Convert.ToInt32(size[0]), Convert.ToInt32(size[1]));
-                Target = ((JSON.String)screen.GetFirstValue("target")).Value;
+                Target = ((Cll.JSON.String)screen.GetFirstValue("target")).Value;
                 Position = new Point(Convert.ToInt32(position[0]), Convert.ToInt32(position[1]));
             }
 
@@ -51,9 +51,9 @@ namespace VCNDSLayout
                 return sb.ToString();
             }
 
-            public JSON.Value GetJSON()
+            public Cll.JSON.Value GetJSON()
             {
-                JSON.Object jsonObj = new JSON.Object();
+                Cll.JSON.Object jsonObj = new Cll.JSON.Object();
                 jsonObj.AddMember("source", Source);
                 jsonObj.AddMember("rotation", Rotation);
                 jsonObj.AddMember("size", Size.Width.ToString() + " " + Size.Height.ToString());
@@ -86,15 +86,15 @@ namespace VCNDSLayout
                     Size = new Size(1280, 720);
             }
 
-            public BackgroundStruct(JSON.Object background)
+            public BackgroundStruct(Cll.JSON.Object background)
             {
-                string[] size = ((JSON.String)background.GetFirstValue("size")).Value.Split(new char[] { ' ' });
-                string[] position = ((JSON.String)background.GetFirstValue("position")).Value.Split(new char[] { ' ' });
+                string[] size = ((Cll.JSON.String)background.GetFirstValue("size")).Value.Split(new char[] { ' ' });
+                string[] position = ((Cll.JSON.String)background.GetFirstValue("position")).Value.Split(new char[] { ' ' });
 
                 Position = new Point(Convert.ToInt32(position[0]), Convert.ToInt32(position[1]));
-                Rotation = Convert.ToInt32(((JSON.Number)background.GetFirstValue("rotation")).Value);
-                Resource = ((JSON.String)background.GetFirstValue("resource")).Value;
-                Target = ((JSON.String)background.GetFirstValue("target")).Value;
+                Rotation = Convert.ToInt32(((Cll.JSON.Number)background.GetFirstValue("rotation")).Value);
+                Resource = ((Cll.JSON.String)background.GetFirstValue("resource")).Value;
+                Target = ((Cll.JSON.String)background.GetFirstValue("target")).Value;
                 Size = new Size(Convert.ToInt32(size[0]), Convert.ToInt32(size[1]));
             }
 
@@ -109,9 +109,9 @@ namespace VCNDSLayout
                 return sb.ToString();
             }
 
-            public JSON.Value GetJSON(int index)
+            public Cll.JSON.Value GetJSON(int index)
             {
-                JSON.Object jsonObj = new JSON.Object();
+                Cll.JSON.Object jsonObj = new Cll.JSON.Object();
                 jsonObj.AddMember("position", Position.X.ToString() + " " + Position.Y.ToString());
                 jsonObj.AddMember("rotation", Rotation);
                 jsonObj.AddMember("resource", "//content_dir/assets/textures/" + Target + index.ToString("00") + ".png");
@@ -171,10 +171,10 @@ namespace VCNDSLayout
             Description = StringLanguages.Empty;
         }
 
-        public Layout(JSON.Object layout)
+        public Layout(Cll.JSON.Object layout)
         {
-            JSON.Array screen = (JSON.Array)layout.GetValue("screen");
-            JSON.Array background = (JSON.Array)layout.GetValue("background");
+            Cll.JSON.Array screen = (Cll.JSON.Array)layout.GetValue("screen");
+            Cll.JSON.Array background = (Cll.JSON.Array)layout.GetValue("background");
 
             if (screen.Count < 1 || screen.Count > 4)
                 throw new Exception("Screens count must be greater than 0 and less than 5.");
@@ -186,7 +186,7 @@ namespace VCNDSLayout
             BackgroundStruct[] backgrounds = new BackgroundStruct[background.Count];
 
             for (int i = 0; i < screens.Length; i++)
-                screens[i] = new ScreenStruct((JSON.Object)screen.GetValue(i));
+                screens[i] = new ScreenStruct((Cll.JSON.Object)screen.GetValue(i));
 
             if (screens[0].Source == "upper" && screens[0].Target == "tv")
                 ScreenUpperTV = screens[0];
@@ -232,8 +232,8 @@ namespace VCNDSLayout
             else
                 ScreenLowerGamePad = new ScreenStruct("lower", "drc", 0, 0, 0, 0);
 
-            backgrounds[0] = new BackgroundStruct((JSON.Object)background.GetValue(0));
-            backgrounds[1] = new BackgroundStruct((JSON.Object)background.GetValue(1));
+            backgrounds[0] = new BackgroundStruct((Cll.JSON.Object)background.GetValue(0));
+            backgrounds[1] = new BackgroundStruct((Cll.JSON.Object)background.GetValue(1));
 
             if (backgrounds[0].Target == "tv")
                 BackgroundTV = backgrounds[0];
@@ -250,24 +250,24 @@ namespace VCNDSLayout
                 BackgroundGamePad = new BackgroundStruct("drc");
 
             if (layout.Contains("pad_rotation"))
-                PadRotation = Convert.ToInt32(((JSON.Number)layout.GetValue("pad_rotation")).Value);
+                PadRotation = Convert.ToInt32(((Cll.JSON.Number)layout.GetValue("pad_rotation")).Value);
             else
                 PadRotation = 0;
             if (layout.Contains("drc_rotation"))
-                DRCRotation = Convert.ToInt32(((JSON.Number)layout.GetValue("drc_rotation")).Value);
+                DRCRotation = Convert.ToInt32(((Cll.JSON.Number)layout.GetValue("drc_rotation")).Value);
             else
                 DRCRotation = 0;
             if (layout.Contains("buttons_rotation"))
-                ButtonsRotation = Convert.ToInt32(((JSON.Number)layout.GetValue("buttons_rotation")).Value);
+                ButtonsRotation = Convert.ToInt32(((Cll.JSON.Number)layout.GetValue("buttons_rotation")).Value);
             else
                 ButtonsRotation = 0;
 
             if (layout.Contains("name_string_id"))
-                NameID = ((JSON.String)layout.GetValue("name_string_id")).Value;
+                NameID = ((Cll.JSON.String)layout.GetValue("name_string_id")).Value;
             else
                 NameID = "";
             if (layout.Contains("desc_string_id"))
-                DescriptionID = ((JSON.String)layout.GetValue("desc_string_id")).Value;
+                DescriptionID = ((Cll.JSON.String)layout.GetValue("desc_string_id")).Value;
             else
                 DescriptionID = "";
 
@@ -294,11 +294,11 @@ namespace VCNDSLayout
             return sb.ToString();
         }
 
-        public JSON.Value GetJSON(int index)
+        public Cll.JSON.Value GetJSON(int index)
         {
-            JSON.Object jsonObj = new JSON.Object();
-            JSON.Array arrayScreens = new JSON.Array();
-            JSON.Array arrayBackgrounds = new JSON.Array();
+            Cll.JSON.Object jsonObj = new Cll.JSON.Object();
+            Cll.JSON.Array arrayScreens = new Cll.JSON.Array();
+            Cll.JSON.Array arrayBackgrounds = new Cll.JSON.Array();
 
             if (ScreenUpperTV.Size.Width > 0 && ScreenUpperTV.Size.Height > 0)
                 arrayScreens.AddValue(ScreenUpperTV.GetJSON());

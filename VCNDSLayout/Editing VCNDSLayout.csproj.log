@@ -1,0 +1,27 @@
+Creating file backup: "VCNDSLayout.csproj.bak".
+
+Working on file "C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\VCNDSLayout.csproj".
+18 conditions found.
+UseHostCompilerIfAvailable = false, was added to the condition "Debug|AnyCPU".
+UseHostCompilerIfAvailable = false, was added to the condition "Release|AnyCPU".
+UseHostCompilerIfAvailable = false, was added to the condition "Debug|x64".
+UseHostCompilerIfAvailable = false, was added to the condition "Release|x64".
+UseHostCompilerIfAvailable = false, was added to the condition "Debug|x86".
+UseHostCompilerIfAvailable = false, was added to the condition "Release|x86".
+UseHostCompilerIfAvailable = false, was added to the condition "Minor release|AnyCPU".
+UseHostCompilerIfAvailable = false, was added to the condition "Minor release|x64".
+UseHostCompilerIfAvailable = false, was added to the condition "Minor release|x86".
+UseHostCompilerIfAvailable = false, was added to the condition "Alpha|AnyCPU".
+UseHostCompilerIfAvailable = false, was added to the condition "Alpha|x64".
+UseHostCompilerIfAvailable = false, was added to the condition "Alpha|x86".
+UseHostCompilerIfAvailable = false, was added to the condition "Beta|AnyCPU".
+UseHostCompilerIfAvailable = false, was added to the condition "Beta|x64".
+UseHostCompilerIfAvailable = false, was added to the condition "Beta|x86".
+UseHostCompilerIfAvailable = false, was added to the condition "Revision release|AnyCPU".
+UseHostCompilerIfAvailable = false, was added to the condition "Revision release|x64".
+UseHostCompilerIfAvailable = false, was added to the condition "Revision release|x86".
+PreBuildEvent was not found, the default event was added.
+PreBuildEvent: "C:\Users\Alberto\source\repos\VCNDSLayout\VCNDSLayout\CllAssemblyVersion.exe" assemblyInfo "$(ProjectDir)Properties\AssemblyInfo.cs" projectPath "$(ProjectPath)" config "$(ConfigurationName)" platform "$(PlatformName)" title "$(SolutionName)" format "major.minor.build.revision"
+
+Saving changes.
+The file was successfully edited.

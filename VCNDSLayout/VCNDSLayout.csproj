@@ -229,7 +229,29 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>cll.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JSON">
+      <HintPath>..\..\JSON\JSON\bin\x86\Release\JSON.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -244,10 +266,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Array.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="Element.cs" />
-    <Compile Include="Elements.cs" />
     <Compile Include="FormEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,26 +280,8 @@
       <DependentUpon>FormOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs" />
-    <Compile Include="LexicalAnalyzer.cs" />
-    <Compile Include="Member.cs" />
-    <Compile Include="Members.cs" />
-    <Compile Include="Node.cs" />
-    <Compile Include="Null.cs" />
-    <Compile Include="Number.cs" />
-    <Compile Include="NumberToken.cs" />
-    <Compile Include="Object.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="String.cs" />
-    <Compile Include="StringToken.cs" />
-    <Compile Include="SyntacticAnalyzer.cs" />
-    <Compile Include="Token.cs" />
-    <Compile Include="Boolean.cs" />
-    <Compile Include="Type.cs" />
-    <Compile Include="Value.cs" />
-    <Compile Include="Word.cs" />
-    <Compile Include="WordLabel.cs" />
-    <Compile Include="WordString.cs" />
     <EmbeddedResource Include="FormEditor.resx">
       <DependentUpon>FormEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +298,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="cll.pfx" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -333,6 +336,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
